@@ -12,7 +12,7 @@ import { IUser } from '../Interface/user.interface';
 export class UserAddComponent implements OnInit {
   submitted = false;
   // options
-  Roles: any = ['user', 'admin', 'super admin', 'guest'];
+  Roles = ['user', 'admin', 'super admin', 'guest'];
 
   constructor(
     public formBuilder: FormBuilder,
