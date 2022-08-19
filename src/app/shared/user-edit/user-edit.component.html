@@ -1,0 +1,63 @@
+<div
+  class="text-center flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+>
+  <h2 class="h2">User Profile</h2>
+</div>
+<div class="row justify-content-center mt-5">
+  <div class="col-md-4">
+    <!-- updateForm -->
+    <form [formGroup]="updateForm" (ngSubmit)="UpdateUser()">
+      <!-- Name -->
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          class="form-control"
+          placeholder="Enter your name"
+          type="text"
+          formControlName="name"
+          [ngClass]="{ 'is-invalid': submitted && formData['name'].errors }"
+          required
+        />
+        <!-- validations for name -->
+        <div *ngIf="(submitted || formData['name'].dirty || formData['name'].touched) && formData['name'].errors">
+          <div *ngIf="formData['name'].errors?.['required']">Name is required</div>
+          <div *ngIf="formData['name'].errors?.['pattern']">
+            Enter valid name used only character
+          </div>
+          <div *ngIf="formData['name'].errors?.['minlength']">
+            minimum length should be 3 char
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- email -->
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          class="form-control"
+          placeholder="Enter your email"
+          type="email"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && formData['email'].errors }"
+          required
+        />
+        <!-- validations for email -->
+        <div
+          *ngIf="
+            (submitted || formData['email'].dirty || formData['email'].touched) && formData['email'].errors
+          "
+        >
+          <div *ngIf="formData['email'].errors?.['required']">Email is required</div>
+          <div *ngIf="formData['email'].errors?.['email']">Enter valid Email</div>
+        </div>
+      </div>
+      <br />
+<!-- button to update User -->
+      <div class="form-group">
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="!updateForm.valid">
+          Update User
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
