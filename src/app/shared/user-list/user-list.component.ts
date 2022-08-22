@@ -8,7 +8,7 @@ import { ApiService } from '../service/api.service';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  users: any = [];
+  users = [];
   constructor(private api: ApiService, private router: Router) {}
   ngOnInit(): void {
     // get all users data
